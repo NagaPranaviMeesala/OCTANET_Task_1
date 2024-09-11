@@ -1,0 +1,85 @@
+public class ATM{
+    private int balance;
+    private int pin;
+    //constructor
+    public ATM(int balance,int pin){
+     // this pointer is used to refering the curr var
+     this.balance=balance;
+     this.pin=pin;
+    }
+    public void displayMenu(){
+        System.out.println(x:"1.Check Balance");
+        System.out.println(x:"2: Deposit");
+        System.out.println(x:"3: Withdraw");
+        System.out.println(x:"4: Change Pin");
+        System.out.println(x:"4: Exit");
+    }
+
+    public void deposit(int amount){
+        balance+=amount;
+    }
+    public void Withdraw(int amount){
+        if(balance<amount){
+            System.out.println(x:"Insufficient Funds");
+            return;
+        }
+        balance-=amount;
+    }
+    public int getBalance(){
+        return balance;
+    }
+    //checks if pin is right or wrong
+    public boolean validatePin(int pin){
+        return this.pin==pin;
+    }
+    public void changePin(int newPin){
+        pin = newPin;
+    }
+    public static void main(String[] args){
+        ATM atm = new ATM(balance:2000,pin:1707);
+        System.out.println(s:"Enter pin");
+        //Saving the pin
+        int pin = Integer.parseInt(System.console().readLine());
+        if(atm.validatePin(pin)){
+            int option = 0;
+            while(option!=5){
+                atm.displayMenu();
+                option = Integer.parseInt(System.console().readLine());
+                switch (option) {
+                    case 1:
+                        System.out.println("Balnace: "+atm.balance());
+                        break;
+                    case 2:
+                        System.out.println(s:"Enter amount");
+                        int amount = Integer.parseInt(System.console().readLine());
+                        atm.deposit(amount);
+                        break;
+                    case 3:
+                        System.out.println(s:"Enter Amount");
+                        amount = Integer.parseInt(System.console().readLine());
+                        atm.Withdraw(amount);
+                        break;
+                    case 4:
+                        System.out.println(s:"Enter New Pin");
+                        int newPin = Integer.parseInt(System.console().readLine());
+                        atm.changePin(newPin);
+                        break;
+
+                    case 5:
+                        System.out.println(x:"Thank You for Using The ATM Service");
+                        break;
+
+                    default:
+                        break;
+        
+            
+                }
+            }
+        }
+        else{
+            System.out.println(x:"Invalid PIN")
+        }
+    }
+    //atm variable-initial values
+    //atm object for the class 
+}
